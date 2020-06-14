@@ -1,12 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+//Router Def
 const dishRouter = express.Router();
-
+//MiddileWares
+dishRouter.use(bodyParser.json());
+//Router
 dishRouter.route('/');
-
-
-//Routes
+//Main Routes
+//http://localhost:3000/deshes
 //All
 dishRouter.all('deshes' ,(req ,res , next)=>{
     res.statusCode = 200;
@@ -33,7 +34,8 @@ dishRouter.delete('/deshes' , (req , res ,next)=>{
     res.end('Not Allowd!');
     });
 
-    //------------------------------------------------------------------
+//Route With Params------------------------------------------------------------------
+//http://localhost:3000/deshes/deshid
 
     //Route GET /deshes/:deshid
 dishRouter.get('/deshes/:deshid' , (req , res ,next)=>{
